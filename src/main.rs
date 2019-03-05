@@ -1,55 +1,65 @@
 #![feature(proc_macro_hygiene)]
 #![recursion_limit = "256"]
 
-extern crate actix_web;
+mod data;
+
 extern crate chrono;
 extern crate csv;
-extern crate listenfd;
 extern crate maud;
 extern crate minifier;
 extern crate plotlib;
 extern crate regex;
 
-use actix_web::{fs::StaticFiles, http::Method, server, App};
-use listenfd::ListenFd;
-use minifier::css::minify;
+use maud::{html, PreEscaped};
 
-use std::sync::Arc;
-use std::sync::Mutex;
+fn render() -> maud::Markup {
+  let styles = data::read_styles().unwrap();
+  let export = data::read_export().unwrap();
+  let chart = data::plot(&export).unwrap();
 
-mod data;
-mod routes;
+  html! {
+    (maud::DOCTYPE)
+    html {
+      head {
+        meta charset="utf-8";
+        meta http-equiv="X-UA-Compatible" content="IE=edge";
 
-pub struct AppState {
-  styles: Arc<Mutex<String>>,
-  export: Arc<Mutex<Vec<data::Record>>>,
+        title { "tosbook" }
+
+        link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css";
+        style { (PreEscaped(String::from(styles))) }
+      }
+
+      body {
+        section {
+          (PreEscaped(chart))
+        }
+
+        section {
+          @for res in &export {
+            div {
+              span { (res.balance) }
+              span { (res.amount) }
+              span { (res.fees) }
+              span { (res.date) }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 fn main() {
-  let mut listenfd = ListenFd::from_env();
+  let build_dir = std::path::Path::new("./.out");
 
-  let styles = minify(data::read_file("./static/style.css").unwrap().as_str()).unwrap();
-  let export = data::read_export().unwrap();
+  std::fs::create_dir_all(build_dir).unwrap();
 
-  let mut app = server::new(move || {
-    App::with_state(AppState {
-      styles: Arc::new(Mutex::new(styles.clone())),
-      export: Arc::new(Mutex::new(export.clone())),
-    })
-    .resource("/", |r| r.method(Method::GET).f(routes::index))
-    .handler(
-      "/static",
-      StaticFiles::new("./static").unwrap().show_files_listing(),
-    )
-    .finish()
-  });
-
-  app = if let Some(l) = listenfd.take_tcp_listener(0).unwrap() {
-    app.listen(l)
-  } else {
-    app.bind("127.0.0.1:3000").unwrap()
-  };
-
-  println!("Started http server: [::1]:3000");
-  let _ = app.run();
+  match std::fs::write(
+    build_dir.join("index.html"),
+    String::from(render().into_string()).as_bytes(),
+  ) {
+    Ok(_) => println!("Export success"),
+    Err(e) => panic!(e),
+  }
 }

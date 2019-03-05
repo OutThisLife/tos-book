@@ -1,3 +1,5 @@
 /target
+node_modules/
 **/*.rs.bk
-static/export*
+.out/
+export.csv

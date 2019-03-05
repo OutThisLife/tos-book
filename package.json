@@ -1,13 +1,16 @@
 {
   "name": "tosbook",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": ".out/index.html",
   "author": "Talasan Nicholson <talasan.nicholson@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "systemfd --no-pid -s http::3000 -- cargo +nightly watch -x run",
-    "start": "cargo +nightly run",
+    "dev": "cargo +nightly watch -w src -x run",
+    "start": "serve ./.out",
     "build": "cargo +nightly build",
     "clean": "cargo +nightly clean"
+  },
+  "dependencies": {
+    "serve": "^10.1.2"
   }
 }
