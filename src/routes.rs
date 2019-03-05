@@ -5,6 +5,8 @@ use data::plot;
 use AppState;
 
 fn render(req: &HttpRequest<AppState>, body: Markup) -> HttpResponse {
+  let styles = req.state().styles.lock().unwrap().clone();
+
   let doc = html! {
     (DOCTYPE)
     html {
@@ -15,7 +17,7 @@ fn render(req: &HttpRequest<AppState>, body: Markup) -> HttpResponse {
         title { "tosbook" }
 
         link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css";
-        style { (PreEscaped(String::from(req.state().styles.lock().unwrap().clone()))) }
+        style { (PreEscaped(String::from(styles))) }
       }
 
       body { (body) }
