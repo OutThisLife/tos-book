@@ -1,0 +1,54 @@
+* {
+  font: 12px/1.15 monospace;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 60% 1fr;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+img, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+figure,h1,h2,h3,h4,h5,h6 {
+  margin: 0;
+}
+
+section {
+  max-height: 100%;
+  overflow: auto;
+  padding: 1vw;
+}
+
+section:first-of-type > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+section:first-of-type > svg text {
+  font-size: 7px;
+}
+
+section:first-of-type > svg line {
+  stroke: rgba(0,0,0,.1);
+}
+
+section:last-of-type {
+  display: grid;
+  grid-template-columns: repeat(4, max-content);
+  align-items: center;
+  justify-content: space-between;
+}
+
+section:last-of-type > div {
+  display: contents;
+}

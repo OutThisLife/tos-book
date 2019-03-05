@@ -1,0 +1,63 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+<g transform="translate(48, 364)">
+<g>
+<path d="M0,-187.7612 L0,-187.7612 L63.304348,-340 L149.21739,-106.56716 L330.08694,0 L425.0435,-289.25372 L520,-258.80597" fill="none" stroke="" stroke-width="2"/>
+</g>
+<g>
+<g>
+<line stroke="black" stroke-width="1" x1="45.21739130434783" x2="45.21739130434783" y1="0" y2="10"/>
+<line stroke="black" stroke-width="1" x1="135.65217391304347" x2="135.65217391304347" y1="0" y2="10"/>
+<line stroke="black" stroke-width="1" x1="226.08695652173913" x2="226.08695652173913" y1="0" y2="10"/>
+<line stroke="black" stroke-width="1" x1="316.5217391304348" x2="316.5217391304348" y1="0" y2="10"/>
+<line stroke="black" stroke-width="1" x1="406.95652173913044" x2="406.95652173913044" y1="0" y2="10"/>
+<line stroke="black" stroke-width="1" x1="497.39130434782606" x2="497.39130434782606" y1="0" y2="10"/>
+</g>
+<line stroke="black" stroke-width="1" x1="0" x2="520" y1="0" y2="0"/>
+<g>
+<text font-size="12" text-anchor="middle" x="45.21739130434783" y="20">
+-2
+</text>
+<text font-size="12" text-anchor="middle" x="135.65217391304347" y="20">
+0
+</text>
+<text font-size="12" text-anchor="middle" x="226.08695652173913" y="20">
+2
+</text>
+<text font-size="12" text-anchor="middle" x="316.5217391304348" y="20">
+4
+</text>
+<text font-size="12" text-anchor="middle" x="406.95652173913044" y="20">
+6
+</text>
+<text font-size="12" text-anchor="middle" x="497.39130434782606" y="20">
+8
+</text>
+</g>
+<text font-size="12" text-anchor="middle" x="260" y="30">
+
+</text>
+</g>
+<g>
+<g>
+<line stroke="black" stroke-width="1" x1="0" x2="-10" y1="-71.04477611940298" y2="-71.04477611940298"/>
+<line stroke="black" stroke-width="1" x1="0" x2="-10" y1="-172.53731343283584" y2="-172.53731343283584"/>
+<line stroke="black" stroke-width="1" x1="0" x2="-10" y1="-274.0298507462687" y2="-274.0298507462687"/>
+</g>
+<line stroke="black" stroke-width="1" x1="0" x2="0" y1="0" y2="-340"/>
+<g>
+<text dominant-baseline="middle" font-size="12" text-anchor="end" x="-15" y="-71.04477611940298">
+0
+</text>
+<text dominant-baseline="middle" font-size="12" text-anchor="end" x="-15" y="-172.53731343283584">
+2
+</text>
+<text dominant-baseline="middle" font-size="12" text-anchor="end" x="-15" y="-274.0298507462687">
+4
+</text>
+</g>
+<text font-size="12" text-anchor="middle" transform="rotate(-90 -30 -170)" x="-30" y="-170">
+
+</text>
+</g>
+</g>
+</svg>
