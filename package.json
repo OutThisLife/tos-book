@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "systemfd --no-pid -s http::3000 -- cargo +nightly watch -x run",
     "start": "cargo +nightly run",
+    "build": "cargo +nightly build",
     "clean": "cargo +nightly clean"
   }
 }
